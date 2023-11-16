@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Ritika</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+
+<link rel="stylesheet" href="loginstyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+<style>
+.content{
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  z-index: 999;
+  text-align: center;
+  padding: 60px 32px;
+  height: 370px;
+  width: 370px;
+  transform: translate(-50%,-50%);
+  background: rgba(255,255,255,0.04);
+  box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+  border-radius: 10px;
+}
+
+.signup{
+  font-size: 15px;
+padding:15px;
+  color: white;
+  font-family: 'Poppins',sans-serif;
+  
+}
+
+.field input{
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #222;
+  font-size: 16px;
+  font-family: 'Poppins',sans-serif;
+  border-radius: 5px;
+}
+.field{
+  position: relative;
+  height: 45px;
+  width: 100%;
+  display: flex;
+  background: rgba(255,255,255,0.94);
+  border-radius: 10px;
+}
+.field span{
+  color: #222;
+  width: 40px;
+  line-height: 45px;
+}
+
+
+
+/* Background image for the body and header */
+  body {
+    background-image: url("traveler.png"); /* Replace "traveler.jpg" with the URL of your desired background image for the entire screen */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  body:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Adjust the opacity here (0.5 means 50% opacity) */
+    z-index: -1;
+  }
+
+  /* Additional CSS styles for the transparent pop-up box */
+    .popup-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8); /* Adjust the opacity here (0.5 means 50% opacity) */
+      z-index: 999; /* Set a higher z-index to ensure it displays above other content */
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-box {
+      background-color: #FFFFFF;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .popup-box p {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .popup-box button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .popup-box .register-btn {
+      background-color: #00FF00;
+      color: #FFFFFF;
+    }
+
+    .popup-box .try-again-btn {
+      background-color: #FF0000;
+      color: #FFFFFF;
+    }
+
+
+</style>
+
+</head>
+<body id="top">
+
+<!-- Transparent Header --><?php
+
+
+ 
+<div class="wrapper row1">
+  <header id="header" class="hoc clear"> 
+    <div id="logo" class="fl_left">
+      <h1><a href="index.html">Ritika</a></h1>
+    </div>
+    <nav id="mainav" class="fl_right">
+      <ul class="clear">
+        <li class="active"><a href="homepage2.php" style="color: white;"  onmouseover="this.style.color='blue'" onmouseout="this.style.color='white';">Home</a></li>
+        <li><a class="drop" href="#" style="color: white;" onmouseover="this.style.color='blue'" onmouseout="this.style.color='white';">Flight Details</a> <!-- Move Dropdown above Link Text -->
+          <ul>
+            <li><a href="#" style="color: white;">Search Flight</a></li>
+            <li><a href="bookingpage.php" style="color: white;">Book Flight</a></li>
+            <li><a href="#" style="color: white;">Cancel Booking</a></li>
+          </ul>
+        </li>
+        <li><a href="login.html" style="color: white;"  onmouseover="this.style.color='blue'" onmouseout="this.style.color='white';">Login</a></li>
+        <li><a href="register.html" style="color: white;" style="color: #0c090A;" onmouseover="this.style.color='blue'" onmouseout="this.style.color='white';">Register</a></li>
+        <li><a href="contact.html" style="color: white;"  onmouseover="this.style.color='blue'" onmouseout="this.style.color='white';">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<!-- JAVASCRIPTS -->
+<script src="layout/scripts/jquery.min.js"></script>
+<script src="layout/scripts/jquery.backtotop.js"></script>
+<script src="layout/scripts/jquery.mobilemenu.js"></script>
+
+<div class="content login-container" id="loginForm">
+  <header>Login Form</header>
+  <form action="login_check.php" method="POST">
+    <div class="field">
+      <span class="fa fa-user"></span>
+      <input type="text" name="email" required placeholder="Email or Phone">
+    </div>
+    <div class="field space">
+      <span class="fa fa-lock"></span>
+      <input type="password" name="password" class="pass-key" required placeholder="Password">
+      <span class="show">SHOW</span>
+    </div>
+    <div class="pass">
+      <a href="register.html" style="color: #00FF00;">Forgot Password?</a>
+    </div>
+    <div class="field">
+      <input type="submit" value="LOGIN">
+    </div>
+  </form>
+
+  <div class="signup">
+    Don't have an account?
+    <a href="register.html" style="color: #00FF00;">Sign Up Now</a>
+  </div>
+</div>
+
+
+ <!-- Transparent Pop-up Box -->
+  <div class="popup-container" id="popupContainer">
+    <div class="popup-box">
+      <p>Invalid email or password</p>
+      <button class="register-btn" onclick="redirectToRegister()">Register</button>
+      <button class="try-again-btn" onclick="closePopup()">Try Again</button>
+    </div>
+  </div>
+
+
+<script>
+  const loginForm = document.getElementById("loginForm");
+  const pass_field = document.querySelector('.pass-key');
+  const showBtn = document.querySelector('.show');
+
+  showBtn.addEventListener('click', function(){
+    if(pass_field.type === "password"){
+      pass_field.type = "text";
+      showBtn.textContent = "HIDE";
+      showBtn.style.color = "#3498db";
+    } else {
+      pass_field.type = "password";
+      showBtn.textContent = "SHOW";
+      showBtn.style.color = "#222";
+    }
+  });
+
+function showPopup() {
+      const popupContainer = document.getElementById("popupContainer");
+      popupContainer.style.display = "flex";
+    }
+
+    function closePopup() {
+      const popupContainer = document.getElementById("popupContainer");
+      popupContainer.style.display = "none";
+    }
+
+    function redirectToRegister() {
+      closePopup();
+      window.location.href = "register.html";
+    }
+
+ function handleLoginError() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('invalid') === 'true') {
+      showPopup();
+    }
+  }
+
+  // Call the function to handle pop-up display
+  handleLoginError();
+</script>
+
+
+
+</body>
+</html>

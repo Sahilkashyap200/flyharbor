@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Transparent Login Form HTML CSS</title>
+    <link rel="stylesheet" href="registerstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+         
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<style>
+        /* Background image for the body and header */
+  body {
+    background-image: url("air.jpg"); /* Replace "traveler.jpg" with the URL of your desired background image for the entire screen */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  body:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity here (0.5 means 50% opacity) */
+    z-index: -1;
+  }
+
+
+
+  /* Additional CSS styles for reducing the gap */
+  .wrapper {
+    padding-top: 29px; /* Adjust the padding top as needed */
+  }
+
+.content{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  z-index: 999;
+  text-align: center;
+  padding: 15px 35px;
+height: 470px;
+  width: 350px;
+  transform: translate(-50%,-50%);
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+  box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+  border-radius: 10px; /* Rounded corners */
+}
+
+
+    </style>
+</head>
+
+<body id="top">
+
+
+  <div class="bg-img">
+        <div class="content">
+            <header>Sign Up Form</header>
+            <form action="register.php" method="POST">
+                <div class="field">
+                    <span class="fa fa-user"></span>
+                    <input type="text" name="name" required placeholder="Name">
+                </div>
+                <div class="field">
+                    <span class="fa fa-phone"></span>
+                    <input type="text" name="phone" required placeholder="Phone Number" minlength="10" maxlength="10" pattern="[1-9]{1}[0-9]{9}">
+                </div>
+                <div class="field">
+                    <span class="fa fa-envelope"></span>
+                    <input type="email" name="email" required placeholder="Email">
+                </div>
+                <div class="field">
+                    <span class="fa fa-venus-mars"></span>
+                    <select name="gender" required style="color: #000000;">
+                     <option value="">Select Gender</option>
+                     <option value="male">Male</option>
+                     <option value="female">Female</option>
+                     <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="field space">
+                    <span class="fa fa-lock"></span>
+                    <input type="password" name="password" class="pass-key" required placeholder="Password">
+                    <span class="show">SHOW</span>
+                </div>
+                <div class="field">
+                    <input type="submit" name="submit" value="REGISTER">
+                </div>
+            </form>
+            <div class="login">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Transparent Header -->
+
+   <div class="wrapper row1">
+    <header id="header" class="hoc clear"> 
+      
+      <div id="logo" class="fl_left">
+        <h1><a href="index.html">Ritika</a></h1>
+      </div>
+      
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <li class="active"><a href="homepage2.html">Home</a></li>
+       <!--   <li><a class="drop" href="#">Flight Details</a>
+            <ul>
+              <li><a href="#">Search Flight</a></li>
+              <li><a href="booking.html">Book Flight</a></li>
+              <li><a href="#">Cancel Booking</a></li>
+            </ul>
+          </li> -->
+          <li><a href="login.html">Login</a></li>
+        <!--  <li><a href="register.html">Register</a></li> 
+          <li><a href="contact.html">Contact Us</a></li> -->
+        </ul>
+      </nav>
+    </header>
+  </div>
+ 
+ 
+<!-- JAVASCRIPTS -->
+<script src="layout/scripts/jquery.min.js"></script>
+<script src="layout/scripts/jquery.backtotop.js"></script>
+<script src="layout/scripts/jquery.mobilemenu.js"></script>
+
+
+
+    <script>
+        const pass_field = document.querySelector('.pass-key');
+        const showBtn = document.querySelector('.show');
+        showBtn.addEventListener('click', function(){
+            if (pass_field.type === "password"){
+                pass_field.type = "text";
+                showBtn.textContent = "HIDE";
+                showBtn.style.color = "#3498db";
+            } else {
+                pass_field.type = "password";
+                showBtn.textContent = "SHOW";
+                showBtn.style.color = "#222";
+            }
+        });
+    </script>
+</body>
+</html>

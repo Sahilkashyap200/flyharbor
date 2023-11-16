@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Schedule Details</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="flight_schedule_fonts/icomoon/style.css">
+    <link rel="stylesheet" href="flight_schedule_css/owl.carousel.min.css">
+    <link rel="stylesheet" href="flight_schedule_css/bootstrap.min.css">
+    <link rel="stylesheet" href="flight_schedule_css/style.css">
+    
+    <!-- Style -->
+    <style>
+        #ticketButton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            padding: 10px 20px; /* Adjust padding for width and height */
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            border-radius: 15px; /* Adjust the border radius for curved corners */
+            border: none; /* Remove the default button border */
+        }
+
+        .content {
+            position: relative;
+            padding-right: 60px; /* Adjust this value based on button width */
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="content">
+        <div class="container">
+            <h2 class="mb-5">Flight Schedule Details</h2>
+            <div class="table-responsive custom-table-responsive">
+                <table class="table custom-table">
+                    <thead>
+                        <tr>    
+                            <th scope="col">Select</th>
+                            <th scope="col">Flight Number</th>
+                            <th scope="col">Airline Name</th>
+                            <th scope="col">Flying From</th>
+                            <th scope="col">Flying To</th>
+                            <th scope="col">Departure Time</th>
+                            <th scope="col">Available Seats</th>
+                        </tr>
+                    </thead>
+                    <tbody class="customtable" id="tableBody">
+                        <!-- Content will be dynamically populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <button id="ticketButton" onclick="redirectToPaymentPage()">Book Flight</button>
+
+    <!-- jQuery and Bootstrap Bundle JS -->
+    <script src="flight_schedule_js/jquery-3.3.1.min.js"></script>
+    <script src="flight_schedule_js/popper.min.js"></script>
+    <script src="flight_schedule_js/bootstrap.min.js"></script>
+    <script src="flight_schedule_js/main.js"></script>
+    <script>
+        // Use AJAX to fetch data from the PHP file
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                populateTable(data);
+            }
+        };
+        xhttp.open("POST", "flight_schedule.php", true);
+        xhttp.send();
+
+        // Function to populate the table with data
+        function populateTable(data) {
+            var tableBody = document.getElementById("tableBody");
+            if (data.length > 0) {
+                var html = "";
+                for (var i = 0; i < data.length; i++) {
+                    html += "<tr>";
+                    html += "<td>";
+                    html += "<label class='control control--radio'>";
+                    html += "<input type='radio' name='flightSelection' class='js-check-all' value='" + data[i].flight_number + "'/>";
+                    html += "<div class='control__indicator'></div>";
+                    html += "</label>";
+                    html += "</td>";
+                    html += "<td>" + data[i].flight_number + "</td>";
+                    html += "<td>" + data[i].airline_name + "</td>";
+                    html += "<td>" + data[i].flying_from + "</td>";
+                    html += "<td>" + data[i].flying_to + "</td>";
+                    html += "<td>" + data[i].departure_time + "</td>";
+                    html += "<td>" + data[i].available_seats + "</td>";
+                    html += "</tr>";
+                }
+                tableBody.innerHTML = html;
+            } else {
+                tableBody.innerHTML = "<tr><td colspan='7'>No data available</td></tr>";
+            }
+        }
+
+        function redirectToPaymentPage() {
+            var selectedFlight = document.querySelector('input[name="flightSelection"]:checked');
+            if (selectedFlight) {
+                var flightNumber = selectedFlight.value;
+                window.location.href = "payment.html?flight=" + flightNumber;
+            } else {
+                alert("Please select a flight before booking.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+ /* Additional CSS styles for reducing the gap */
+  .wrapper {
+    padding-top: 29px; /* Adjust the padding top as needed */
+  }
+
+  
+
+  /* Add some space between header and login form */
+  .content {
+    padding-top: 100px; /* Adjust the padding top as needed */
+  }
+/* Additional CSS to manage spacing of header from top margin */
+  #header {
+    margin-top: 29px; /* Adjust the top margin as needed */
+  }
+
+
+/* Apply background to the header similar to the login form background */
+  .header-bg {
+    background-image: url('images/demo/backgrounds/01.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+<header id="header" class="header-bg hoc clear"> 
+      
+      <div id="logo" class="fl_left">
+        <h1><a href="index.html">Ritika</a></h1>
+      </div>
+
+
+<div class="login">
+      Or login with
+    </div> 
+
+  <div class="links">
+      <div class="facebook">
+        <i class="fab fa-facebook-f"><span>Facebook</span></i>
+      </div>
+      <div class="instagram">
+        <i class="fab fa-instagram"><span>Instagram</span></i>
+      </div>
